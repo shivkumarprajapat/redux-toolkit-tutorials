@@ -3,7 +3,7 @@ import usersReducer from './reducers/usersReducer';
 
 export default configureStore({
     reducer: {
-        users:usersReducer,
+        users: usersReducer,
 
     },
     middleware: [...getDefaultMiddleware()]

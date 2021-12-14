@@ -8,6 +8,13 @@ const usersReducer = createSlice({
             { id: 2, name: "Mahesh" },
         ],
     },
+    reducers: {
+        addUser: (state, action) => {
+            console.log(action);
+            state.users = [...state.users, action.payload]
+        }
+    }
 });
 
+export const { addUser } = usersReducer.actions;
 export default usersReducer.reducer;
