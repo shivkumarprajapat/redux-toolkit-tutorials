@@ -1,24 +1,15 @@
-import React, { useRef } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { addUser } from '../store/reducers/usersReducer';
+import React, { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { getUsers } from '../store/action/userAction';
 
 export default function Home() {
-    const state = useSelector((state) => state.users);
-    console.log(state.users);
     const dispatch = useDispatch();
-    const inputRef = useRef('');
-    const storeUser = (e) => {
-        e.preventDefault();
-        console.log(inputRef.current.value);
-        dispatch(addUser(inputRef.current.value));
-        inputRef.current.value = '';
-    }
+
+    useEffect(() => {
+        dispatch(getUsers())
+    })
+
     return (
-
-        <form onSubmit={storeUser}>
-            <input type="text" name='' placeholder='Add User' ref={inputRef} />
-            <input type="submit" value='Add User' />
-        </form>
-
+        <h1>List of users</h1>
     )
 }
